@@ -1,7 +1,15 @@
+/*
+ * @Author: FrankFungcode combeebe@gmail.com
+ * @Date: 2025-12-03 23:28:02
+ * @LastEditors: FrankFungcode combeebe@gmail.com
+ * @LastEditTime: 2025-12-04 23:11:24
+ * @FilePath: \frank-spa\src\hooks\useImmer.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /**
  * 让你可以用"可变"的方式编写代码，但实际产生不可变更新的库
  * useImmer - 替代 useState
- * 
+ *
  * 1.方便替换基本的useState
  * 2. * const [state, setState] = useImmer(function () {
             return { a: 123 };
@@ -39,7 +47,8 @@
    * Immer 让 React 状态管理变得更直观，特别是处理复杂状态时。通过 useImmer 和 useImmerReducer，你可以用熟悉的"可变"语法编写代码,同时保持 React 需要的不可变性。
    */
 
-import { Draft, freeze, produce } from "immer";
+import type { Draft } from "immer";
+import { freeze, produce } from "immer";
 import { useCallback, useState } from "react";
 export type DraftFunction<S> = (draft: Draft<S>) => void;
 export type Updater<S> = (arg: S | DraftFunction<S>) => void;
@@ -48,7 +57,7 @@ export type ImmerHook<S> = [S, Updater<S>];
 // 函数的签名
 export function useImmer<S = unknown>(
   initialValue: S | (() => S)
-): [S, ImmerHook<S>];
+): ImmerHook<S>;
 
 export function useImmer<T>(initialValue: T) {
   const [val, updateValue] = useState(
