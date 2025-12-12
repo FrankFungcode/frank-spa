@@ -1,0 +1,22 @@
+###
+ # @Author: FrankFungcode combeebe@gmail.com
+ # @Date: 2025-12-10 15:33:30
+ # @LastEditors: FrankFungcode combeebe@gmail.com
+ # @LastEditTime: 2025-12-12 13:39:07
+ # @FilePath: \frank-spa\.husky\pre-commit
+ # @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+### 
+#!/bin/sh
+#. "$(dirname "$0")/_/husky.sh"
+
+#echo "🔍 Running code quality checks..."
+
+# 运行 biome check（包含 lint 和 format 检查）
+#yarn check
+
+#if [ $? -ne 0 ]; then
+#  echo "❌ Code quality checks failed. Please fix the issues before committing."
+#  exit 1
+#fi
+
+#echo "✅ Code quality checks passed!"

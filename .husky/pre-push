@@ -1,0 +1,22 @@
+###
+ # @Author: FrankFungcode combeebe@gmail.com
+ # @Date: 2025-12-10 15:34:32
+ # @LastEditors: FrankFungcode combeebe@gmail.com
+ # @LastEditTime: 2025-12-12 13:37:57
+ # @FilePath: \frank-spa\.husky\pre-push
+ # @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+###
+#!/bin/sh
+#. "$(dirname "$0")/_/husky.sh"
+
+#echo "🧪 Running tests before push..."
+
+# 运行单元测试
+#yarn test
+
+#if [ $? -ne 0 ]; then
+#  echo "❌ Tests failed. Please fix the failing tests before pushing."
+#  exit 1
+#fi
+
+#echo "✅ All tests passed!"

@@ -2,7 +2,7 @@
  * @Author: FrankFungcode combeebe@gmail.com
  * @Date: 2025-12-03 00:36:08
  * @LastEditors: FrankFungcode combeebe@gmail.com
- * @LastEditTime: 2025-12-09 16:48:57
+ * @LastEditTime: 2025-12-10 16:51:37
  * @FilePath: \frank-spa\webpack.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,6 +13,10 @@ const _mode = argv.mode || "development";
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const _modeflag = _mode === "production" ? true : false;
+// build的时候清理dist文件夹
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// 进度条插件
+const { ThemedProgressPlugin } = require("themed-progress-plugin");
 
 const webpackBaseConfig = {
   entry: {
@@ -26,6 +30,15 @@ const webpackBaseConfig = {
         use: {
           // `.swcrc` can be used to configure swc
           loader: "swc-loader",
+        },
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024, // 8kb 以下内联
+          },
         },
       },
       {
@@ -48,7 +61,7 @@ const webpackBaseConfig = {
       "@layouts": resolve("src/layouts"),
       "@routes": resolve("src/routes"),
       "@assets": resolve("src/assets"),
-      "@states": resolve("src/states"),
+      "@stores": resolve("src/stores"),
       "@service": resolve("src/service"),
       "@utils": resolve("src/utils"),
       "@lib": resolve("src/lib"),
@@ -63,6 +76,7 @@ const webpackBaseConfig = {
     },
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: _modeflag
         ? "styles/[name].[contenthash:5].css"
@@ -72,6 +86,7 @@ const webpackBaseConfig = {
         : "styles/[name].css",
       ignoreOrder: false,
     }),
+    new ThemedProgressPlugin(),
   ],
 };
 
