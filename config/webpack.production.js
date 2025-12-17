@@ -39,11 +39,14 @@ module.exports = {
   externals: {
     react: "React",
     "react-dom": "ReactDOM",
+    "react-dom/client": "ReactDOM",
+    "@remix-run/router": "RemixRouter",
+    "react-router": "ReactRouter",
     "react-router-dom": "ReactRouterDOM",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Frank SPA",
+      title: "Yideng",
       filename: "index.html",
       template: resolve(__dirname, "../src/index-prod.html"),
       favicon: "./public/favicon.ico",
